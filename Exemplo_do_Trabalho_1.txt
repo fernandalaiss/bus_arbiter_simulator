@@ -1,0 +1,38 @@
+Informações solicitadas para o Simulador de Árbitro de Barramento
+
+1. O usuário informa a quantidade de periféricos
+2. O usuário informa a prioridade de cada periférico
+3. O usuário informa a ordem de solicitação dos periféricos
+4. O usuário informa o tempo que cada periférico precisa para enviar/receber informações
+
+O exemplo a seguir é só para ilustrar o funcionamento do simulador.
+A quantidade de periféricos, prioridade e ordem de solicitação podem variar conforme a
+entrada do usuário.
+
+Exemplo de entrada:
+1. Informe a quantidade de periféricos:
+5
+
+2. Informe a prioridade de cada periférico (1 a 3, sendo 1 a mais baixa):
+Periférico: 1 2 3 4 5
+Prioridade: 3 1 1 2 3
+
+3. Informe a ordem de solicitação dos periféricos:
+Ordem de solicitação: 3 1 5 3 4 1 5 1
+
+4. Informe o tempo que cada periférico precisa (múltiplos de 5)
+Ordem de solicitação: 	    3  1  5  3  4 1 5  1
+Tempo para cada periférico: 5 20 10 10 15 5 5 15
+
+
+Exemplo de saída:
+Daisy Chaining: 3 1 5 3 4 1 5 1
+Prioridade Fixa: 1 5 1 5 1 4 3 3
+Prioridade Rotativa: 3 3 4 1 5 1 5 1
+Justiça: 3 1 5 3 4 1 5 1 1 5 3 4 1 1 4 1 1
+
+
+
+
+
+
