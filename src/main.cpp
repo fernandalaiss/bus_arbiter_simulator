@@ -3,9 +3,6 @@
 
 void prioridadeFixa(int quantia_p, int prioridades[], std::vector <int> solicitacoes){
 	std::cout << "PRIORIDADE FIXA: ";
-	//obedencendo a ordem de solicitações, imprime as com maior prioridade,
-	//independe do tempo
-	//passo1 : percorrer as solicitações e identificar a prioridade de cada
 	for(int p = 3; p>0; p--){
 		for(int i = 0; i < solicitacoes.size(); i++){
 			if(prioridades[solicitacoes[i]-1] == p){
