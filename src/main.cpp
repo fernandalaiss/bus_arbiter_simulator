@@ -28,13 +28,19 @@ void prioridadeRotativa(int quantia_p, int prioridades[], std::vector <int> soli
 	std::cout << "\n";
 }
 
-void justica(int quantia_p, int tempo[], std::vector <int> solicitacoes){
+void justica(std::vector <int> tempo, std::vector <int> solicitacoes){
 	std::cout << "JUSTIÇA: ";
 	
-	for(int i = 0; i < solicitacoes.size(); i++){
-		if(tempo[solicitacoes[i]-1] >= 5){
-			std::cout << solicitacoes[i] << " ";
-			tempo[solicitacoes[i]-1] -= 5;
+	while(solicitacoes.size() > 0){
+		for(int i = 0; i < solicitacoes.size(); i++){
+			if(tempo[i] >= 5){
+				std::cout << solicitacoes[i] << " ";
+				tempo[i] -= 5;
+			}else{
+				solicitacoes.erase(solicitacoes.begin()+i);
+				tempo.erase(tempo.begin()+i);
+				i--;
+			}
 		}
 	}
 	std::cout << "\n";
@@ -68,18 +74,19 @@ int main(){
 
 	//talvez aqui seja percebido q queue não é uma boa escolha pois, pra imprimir cada periférico
 	//e perguntar quanto tempo ele vai levar, precise apagar o primeiro elemento, perdendo todos os dados
-	int tempo[solicitacoes.size()];
-	int quant_solicitacoes = solicitacoes.size();
+	std::vector <int> tempo;
+	int t;
 	std::cout << "\n4. Informe o tempo que cada periférico precisa para enviar/receber informações (múltiplos de 5): " << std::endl;
-	for (int i = 0; i < quant_solicitacoes; i++){
+	for (int i = 0; i < solicitacoes.size(); i++){
 		std::cout << "Solicitação " << i+1 << ": ";
-		std::cin >> tempo[i];
+		std::cin >> t;
+		tempo.push_back(t);
 	}
 	
 	std::cout << "\nSolicitações atendidas utilizando diferentes arbitragens de barramento: " << std::endl;
 	prioridadeFixa(quantia_p, prioridades, solicitacoes);
 	prioridadeRotativa(quantia_p, prioridades, solicitacoes);
-	justica(quantia_p, tempo, solicitacoes);
+	justica(tempo, solicitacoes);
 
 	return 0;
 }
