@@ -70,8 +70,6 @@ int main(){
 			solicitacoes.push_back(periferico);
 	}while(periferico != 0);
 
-	//talvez aqui seja percebido q queue não é uma boa escolha pois, pra imprimir cada periférico
-	//e perguntar quanto tempo ele vai levar, precise apagar o primeiro elemento, perdendo todos os dados
 	std::vector <int> tempo;
 	int t;
 	std::cout << "\n4. Informe o tempo que cada periférico precisa para enviar/receber informações (múltiplos de 5): " << std::endl;
@@ -86,16 +84,19 @@ int main(){
 	auto inicio = std::clock();
 	prioridadeFixa(quantia_p, prioridades, solicitacoes);
 	double duracao = (double)((std::clock() - inicio)/(double)CLOCKS_PER_SEC);
+	std::cout.precision(10);
 	std::cout << "Tempo de compilação: " << duracao << " segundos.\n\n";
 	
 	auto inicio2 = std::clock();
 	prioridadeRotativa(quantia_p, prioridades, solicitacoes);
 	double duracao2 = (double)((std::clock() - inicio2)/(double)CLOCKS_PER_SEC);
+	std::cout.precision(10);
 	std::cout << "Tempo de compilação: " << duracao2 << " segundos.\n\n";
 
 	auto inicio3 = std::clock();
 	justica(tempo, solicitacoes);
 	double duracao3 = (double)((std::clock() - inicio3)/(double)CLOCKS_PER_SEC);
+	std::cout.precision(10);
 	std::cout << "Tempo de compilação: " << duracao3 << " segundos.\n\n";
 
 	
